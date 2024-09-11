@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: hsl(261, 88%, 17%);
+            color: hsl(261, 88%, 90%);
+            text-align: center;
+        }
+
+        h1 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .strength-meter {
+            height: 2rem;
+            border: 3px solid hsl(261, 88%, 57%);
+            width: 90%;
+            position: relative;
+            border-radius: 1rem;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .strength-meter::before {
+            --bg-color: hsl(261, 88%, 67%);
+            
+
+            content: "";
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: calc(1% * var(--strength, 0));
+            background-color: var(--bg-color);
+            /* border-radius: 1rem; */
+            transition: width 200ms;
+        }
+
+        .password-input {
+            margin-top: 1rem;
+            outline: none;
+            width: 90%;
+            padding: .35rem;
+            background-color: hsl(261, 88%, 25%);
+            color: white;
+            border: 1px solid hsl(261, 88%, 57%);
+            text-align: center;
+            border-radius: .3rem;
+        }
+
+        .password-input:focus {
+            border-color: hsl(261, 88%, 70%);
+        }
+
+        .reasons > * {
+            margin-top: .5rem;
+            color: hsl(261, 88%, 80%);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>password strength test</h1>
+    <div class="strength-meter" id="strength-meter"></div>
+    <input class="password-input" id="password-input" type="text" value="your password" autofocus aria-labelledby="password">
+    <div id="reasons" class="reasons">
+
+    </div>
+</body>
+</html>
